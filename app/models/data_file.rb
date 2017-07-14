@@ -3,7 +3,7 @@ class DataFile < ApplicationRecord
   has_many :converted_files, class_name: "DataFile", foreign_key: :parent_id
 
   def self.server_name
-    "http://c10e8b52.ngrok.io"
+    "http://141.89.53.156"
   end
 
   def file_path
