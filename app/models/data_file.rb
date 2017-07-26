@@ -1,6 +1,9 @@
+require 'fileutils'
+
 class DataFile < ApplicationRecord
   belongs_to :parent, class_name: "DataFile", foreign_key: :parent_id, optional: true
   has_many :converted_files, class_name: "DataFile", foreign_key: :parent_id
+  before_destroy :remove_directory
 
   def self.server_name
     "http://141.89.53.156:8081"
@@ -21,6 +24,10 @@ class DataFile < ApplicationRecord
     Dir.mkdir self.images_path rescue 0
     Docsplit.extract_images(self.file_path, format: [:png], output: self.images_path)
     self
+  end
+
+  def remove_directory
+    FileUtils.rm_rf(images_path)
   end
 
   def web_path

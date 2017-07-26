@@ -27,6 +27,12 @@ class DataFilesController < ApplicationController
     send_data df.contents, filename: df.name, disposition: :inline
   end
 
+  def destroy
+    df = DataFile.find(params[:data_file_id])
+    df.destroy!
+    render json: {ok: "ok"}
+  end
+
   def converted
     df = DataFile.find(params[:data_file_id])
     render json: {

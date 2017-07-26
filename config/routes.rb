@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :data_files do
     get "converted"
+    get "destroy"
   end
 end
