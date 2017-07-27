@@ -6,7 +6,7 @@ class DataFile < ApplicationRecord
   before_destroy :remove_directory
 
   def self.server_name
-    "http://141.89.53.156:8081"
+    "http://141.89.53.189:8081"
     #"http://localhost:3000"
   end
 
